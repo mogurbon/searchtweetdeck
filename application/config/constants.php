@@ -82,4 +82,8 @@ defined('EXIT_UNKNOWN_METHOD') OR define('EXIT_UNKNOWN_METHOD', 6); // unknown c
 defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user input
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
-defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error
+define('CONSUMERKEY', 'HB0fMz1BajBg1QhLHeBQxkjjk');
+define('CONSUMERSECRET', 'dHfWIgyJP7njjhB1A3PCTCHvltHZkeCo1lOaz70Qgc4j5LdnV2');
+define('ACCESTOKEN','108997918-2OJjkexR99fwfHzB1FPwqAmt5S2uKxbNDgASUZYY');
+define('ACCESTOKENSECRET','7lMFOWk0HC977wDvhufogduZv6Bq3aR5jcSHSBrjpGNv9');
