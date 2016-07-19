@@ -14,6 +14,16 @@ class Inicio extends CI_Controller {
             
 		$this->load->view('index_view');
 	}
+	public function searchTweets()
+	{
+		$word=$this->input->post('word');
+		echo $word; die;
+		$connection = new TwitterOAuth(CONSUMERKEY, CONSUMERSECRET, ACCESTOKEN, ACCESTOKENSECRET);
+        #$content = $connection->get("account/verify_credentials");
+        $search=$connection->get('search/tweets', ['q'=>'ramsay']);
+        echo "<pre>";
+        var_dump($search);
+	}
 }
 
 
