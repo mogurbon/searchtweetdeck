@@ -17,12 +17,19 @@ class Inicio extends CI_Controller {
 	public function searchTweets()
 	{
 		$word=$this->input->post('word');
-		echo $word; die;
+		
 		$connection = new TwitterOAuth(CONSUMERKEY, CONSUMERSECRET, ACCESTOKEN, ACCESTOKENSECRET);
+		$content = $connection->get("account/verify_credentials");
         #$content = $connection->get("account/verify_credentials");
         $search=$connection->get('search/tweets', ['q'=>'ramsay']);
-        echo "<pre>";
-        var_dump($search);
+
+		foreach ($search->statuses as $result) {
+		  //echo $result->user->screen_name . ": " . $result->text . "<br>";
+		  $tweets[]['screen_name']=$result->user->screen_name;
+		  $tweets[]['text']=$result->text;
+		}
+
+        echo json_encode($tweets);
 	}
 }
 
