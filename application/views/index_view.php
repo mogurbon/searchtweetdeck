@@ -26,7 +26,7 @@
 </script>
 
 <style type="text/css">
-	.column {float: left;}
+	.column {float: left; height: 100%;}
 </style>
 </head>
 <body>
@@ -76,10 +76,33 @@
 			$.ajax({
 			  method: "POST",
 			  url: "<?php echo site_url(['inicio','searchTweets']) ?>",
-			  data: { word: $('#busqueda').val()}
+			  data: { word: $('#busqueda').val()},
+			  dataType: "json"
 			})
-			  .done(function( msg ) {
-			    
+			  .done(function( data ) {
+			      
+			      
+			      var cont =1;
+			      var num=1;
+			      var total=data.length;
+			      
+			      var html ='<div class="column"><ul>';
+			      $.each( data, function( key, val ) {
+				    
+				    	html += "<li id='" + num  + "'>" + val.screen_name + ":"+ val.text+" </li>";
+				    	if (cont==10 ){
+				    		html+='</ul></div><div class="column">';
+				    		cont=1;
+				    	}
+				    	if(num==total){
+				    		html+='</ul></div>';
+				    	}
+				    	cont++;
+				    	num++;
+				  });
+				  //console.log(html);
+				  $('#content_tweets').html(html);
+				  
 			  });
 		});
 	});
